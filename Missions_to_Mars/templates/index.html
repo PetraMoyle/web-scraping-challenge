@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>MISSION TO MARS</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      
+    </head>
+
+    <body>
+
+        <!--Header with a button-->
+        <div class="jumbotron text-center">
+            <h1 class="display-4">Mission to Mars</h1>
+            <a class="btn btn-primary btn-lg" href="/scrape" role="button">Scrape New Data</a>
+          </div>
+
+        <!--Section for the latest news-->
+        <div class="container">
+            <div class="row">
+                <h3><b>Latest Mars News</b></h3>
+                <h4><b>{{mars_data.news_title}}</b></h4>
+                <p>{{mars_data.News_paragraph}}</p>
+            </div>
+        </div>
+
+        <!--Section for the Featured Mars Image & Facts Table-->
+        <div class="container">
+            <div class="row">
+              <div class="col-6">
+                <h3><b>Featured Mars Image</b></h3>
+                <img src="{{mars_data.Featured_Image}}" alt="Featured Mars Image">
+              </div>
+              <div class="col-6">
+                <h3><b>Mars Facts</b></h3>
+                {{mars_data.Mars_Facts|safe}}
+              </div>
+
+        <!--Header for the images-->
+        <div class="container">
+            <div class="row">
+                <h3 style="text-align: center;"><b>Mars Hemispheres</b></h3>
+                <hr style="width:100%;text-align:left;margin-left:1;">
+            </div>
+        </div>
+
+        <!--Loop through the dictonary to get images and titles-->
+        {%for hemisphere in mars_data.image_list%}
+            <!-- <div class="container">
+              <div class="row"> -->
+                <div class="col-6">
+                  <figure class="figure">
+                      <img src="{{hemisphere.image_url}}" style="width:300px;height:300px" class="figure-img img-fluid rounded" alt="Hemisphere Images">
+                      <figcaption class="figure-caption">{{hemisphere.title}}</figcaption>
+                  </figure>
+                </div>
+              <!-- </div>
+          </div> -->
+        {% endfor %}
+    </body>
+
+</html>
